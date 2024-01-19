@@ -142,17 +142,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adminEmailSent = sendAdminEmail($formData);
 
     if ($autoResponseSent && $adminEmailSent) {
-        echo json_encode(['success' => true, 'message' => 'Form submitted successfully.']);
+        echo "<script>alert('Form submitted successfully.'); window.location.href = 'index.php';</script>";
     } else {
         echo json_encode(['success' => false, 'message' => 'Failed to send emails.']);
     }
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
-}
-
-
-if ($autoResponseSent && $adminEmailSent) {
-    echo "<script>alert('Form submitted successfully.'); window.location.href = 'index.php';</script>";
-} else {
-    echo json_encode(['success' => false, 'message' => 'Failed to send emails.']);
 }
