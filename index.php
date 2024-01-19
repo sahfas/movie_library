@@ -426,31 +426,31 @@
             <p>Lorem ipsum dolor sit amet, consectetur.</p>
             <div class="row">
                 <div class="col-md-6 pl-md-4 pr-md-4 order-md-0">
-                    <form id="contactForm">
+                    <form id="contactForm" action="functions.php" method="post">
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="first_name" class="form-label text-grey">First Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="first_name">
+                                <input name="first_name" type="text" class="form-control" id="first_name">
                             </div>
                             <div class="col-md-6">
                                 <label for="last_name" class="form-label text-grey">Last Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="last_name">
+                                <input name="last_name" type="text" class="form-control" id="last_name">
                             </div>
                             <div class="col-md-12">
                                 <label for="email" class="form-label text-grey">Email <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="email">
+                                <input name="email" type="email" class="form-control" id="email">
                             </div>
                             <div class="col-md-12">
                                 <label for="telephone" class="form-label text-grey">Telephone</label>
-                                <input type="text" class="form-control" id="telephone">
+                                <input name="telephone" type="text" class="form-control" id="telephone">
                             </div>
                             <div class="col-md-12">
                                 <label for="message" class="form-label text-grey">Message <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="message"></textarea>
+                                <textarea name="message" class="form-control" id="message"></textarea>
                                 <div id="messageHelp" class="form-text text-white"><span class="text-danger">*</span>required fields</div>
                             </div>
                             <div class="col-md-12 mt-4">
-                                <input type="checkbox" class="form-check-input" id="terms">
+                                <input name="terms" type="checkbox" class="form-check-input" id="terms">
                                 <label class="form-check-label" for="terms"><span class="text-grey">I agree to the </span><u>Terms & Conditions</u></label>
                             </div>
                             <div class="col-md-12">
