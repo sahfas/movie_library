@@ -105,6 +105,10 @@
             width: 30px;
             height: 30px;
         }
+        .search-btn, .search-btn:hover, .search-btn:focus{
+            color: white;
+            background-color: #555;
+        }
 
         .movie-card img {
             width: 100%;
@@ -319,6 +323,8 @@
 
         .select2-container .select2-selection--multiple {
             min-height: 40px;
+            border-top-left-radius: unset;
+            border-bottom-left-radius: unset;
         }
     </style>
 </head>
@@ -368,7 +374,7 @@
                 </div>
                 <div class="col-md-6 mt-2">
                     <div class="input-group">
-                        <button style="width: 15%;" class="btn btn-primary" type="button" id="searchMovieBtn"><i class="fas fa-search"></i></button>
+                        <button style="width: 15%;" class="btn search-btn disabled" type="button" id="searchMovieBtn"><i class="fas fa-search"></i></button>
                         <select id="movieSearch" class="form-control" multiple="multiple" style="width: 85%;">
                             <!-- Options will be dynamically added here -->
                         </select>
@@ -425,7 +431,7 @@
             <h2 class="mt-20">How to reach us</h2>
             <p>Lorem ipsum dolor sit amet, consectetur.</p>
             <div class="row">
-                <div class="col-md-6 pl-md-4 pr-md-4 order-md-0">
+                <div class="col-md-5 pl-md-4 pr-md-4 order-md-0">
                     <form id="contactForm" action="functions.php" method="post">
                         <div class="row">
                             <div class="col-md-6">
@@ -453,13 +459,13 @@
                                 <input name="terms" type="checkbox" class="form-check-input" id="terms">
                                 <label class="form-check-label" for="terms"><span class="text-grey">I agree to the </span><u>Terms & Conditions</u></label>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-3">
                                 <button type="submit" class="btn btn-warning text-white float-end">SUBMIT</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6 order-md-1">
+                <div class="col-md-7 order-md-1">
                     <div class="contact-map embed-responsive embed-responsive-21by9">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.3807403172596!2d79.940426!3d6.8448775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25069caa2f53b%3A0xe7eae3a8b1f1214d!2seBEYONDS%20eBusiness%20%26%20Digital%20Solutions!5e0!3m2!1sen!2slk!4v1705647038353!5m2!1sen!2slk" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
