@@ -54,7 +54,7 @@
 
         .header-content {
             color: #fff;
-            background: url('theater.png') no-repeat center center;
+            background: url('img/theater.png') no-repeat center center;
             background-size: cover;
             padding: 150px 0;
             height: 400px;
@@ -369,7 +369,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-rtl">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo" width="150" height="50"></a>
+            <a class="navbar-brand" href="#"><img src="img/logo.png" alt="Logo" width="150" height="50"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="navbar-toggler-icon" style="color: white;"></i>
             </button>
@@ -422,7 +422,7 @@
             <div class="row" id="movieCardsContainer">
                 <div class="col-lg-4 col-md-6 movie-card">
                     <div class="card bg-dark text-white position-relative">
-                        <img src="batman.png" class="card-img-top" alt="Movie Poster">
+                        <img src="img/batman.png" class="card-img-top" alt="Movie Poster">
                         <button type="button" class="close-btn" onclick="removeMovieCard(this)" title="Remove">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -435,7 +435,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 movie-card">
                     <div class="card bg-dark text-white position-relative">
-                        <img src="horse.png" class="card-img-top" alt="Movie Poster">
+                        <img src="img/horse.png" class="card-img-top" alt="Movie Poster">
                         <button type="button" class="close-btn" onclick="removeMovieCard(this)" title="Remove">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -448,7 +448,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 movie-card">
                     <div class="card bg-dark text-white position-relative">
-                        <img src="spiderman.png" class="card-img-top" alt="Movie Poster">
+                        <img src="img/spiderman.png" class="card-img-top" alt="Movie Poster">
                         <button type="button" class="close-btn" onclick="removeMovieCard(this)" title="Remove">
                             <span aria-hidden="true">×</span>
                         </button>
