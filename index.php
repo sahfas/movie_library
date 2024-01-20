@@ -37,7 +37,11 @@
         }
 
         .nav-link:hover {
-            color: #ccc;
+            color: #fff;
+        }
+
+        .nav-link:focus {
+            color: crimson;
         }
 
         .navbar-toggler {
@@ -105,7 +109,10 @@
             width: 30px;
             height: 30px;
         }
-        .search-btn, .search-btn:hover, .search-btn:focus{
+
+        .search-btn,
+        .search-btn:hover,
+        .search-btn:focus {
             color: white;
             background-color: #555;
         }
@@ -278,6 +285,15 @@
                 height: 500px;
             }
 
+            .navbar-toggler {
+                /* display: block !important; */
+                visibility: hidden;
+            }
+
+            .navbar-toggler-icon {
+                color: #fff;
+            }
+
         }
 
         .contact-section input[type="text"],
@@ -326,6 +342,27 @@
             border-top-left-radius: unset;
             border-bottom-left-radius: unset;
         }
+
+        .navbar-toggler {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .navbar-nav .nav-link span {
+            border-bottom: 2px solid white;
+        }
+
+        .start-center-paragraph {
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: baseline;
+            align-content: space-around;
+        }
+
+        .align-center-paragraph {
+            justify-content: center;
+        }
     </style>
 </head>
 
@@ -334,12 +371,12 @@
         <div class="container">
             <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo" width="150" height="50"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+                <i class="navbar-toggler-icon" style="color: white;"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                        <a class="nav-link" aria-current="page" href="#"><span>HOME</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">OUR SCREENS</a>
@@ -444,11 +481,11 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="email" class="form-label text-grey">Email <span class="text-danger">*</span></label>
-                                <input name="email" type="email" class="form-control" id="email">
+                                <input name="email" type="text" class="form-control" id="email">
                             </div>
                             <div class="col-md-12">
-                                <label for="telephone" class="form-label text-grey">Telephone</label>
-                                <input name="telephone" type="text" class="form-control" id="telephone">
+                                <label for="phone" class="form-label text-grey">Phone</label>
+                                <input name="phone" type="text" class="form-control" id="phone">
                             </div>
                             <div class="col-md-12">
                                 <label for="message" class="form-label text-grey">Message <span class="text-danger">*</span></label>
@@ -478,10 +515,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p>IT Group<br>C. Salvador de Madariaga, 1<br>28027 Madrid<br>Spain</p>
+                    <p class="d-flex start-center-paragraph">
+                        <span>IT Group</span>
+                        <span>C. Salvador de Madariaga, 1</span>
+                        <span>28027 Madrid</span>
+                        <span>Spain</span>
+                    </p>
                 </div>
                 <div class="col-md-6 social-icons">
-                    <p>Follow us on
+                    <p class="d-flex align-center-paragraph">
+                        <span>Follow us on</span>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </p>
@@ -522,7 +565,6 @@
 
                 // Function to truncate text to a certain number of characters
                 function truncateText(text, limit) {
-                    console.log(limit);
                     if (text.length > limit) {
                         return text.substring(0, limit) + '...';
                     }
@@ -573,6 +615,7 @@
                 ajax: {
                     delay: 250, // Add a small delay to avoid making too many requests
                     processResults: function(data) {
+                        console.log(data);
                         return {
                             results: data.map(item => ({
                                 id: item.show.id,
@@ -624,6 +667,7 @@
                 const firstName = document.getElementById('first_name').value;
                 const lastName = document.getElementById('last_name').value;
                 const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
                 const message = document.getElementById('message').value;
                 const termsCheckbox = document.getElementById('terms'); // Update the ID accordingly
 
@@ -639,13 +683,18 @@
                     return false;
                 }
 
-                if (email.trim() === '') {
-                    alert('Please enter your Email.');
+                if (email.trim() === '' || !isValidEmail(email)) {
+                    alert('Please enter a valid Email.');
                     return false;
                 }
 
-                if (message.trim() === '') {
-                    alert('Please enter a message.');
+                if (phone.trim() !== '' && !isValidPhoneNumber(phone)) {
+                    alert('Please enter a valid 10-digit Phone Number.');
+                    return false;
+                }
+
+                if (message.trim() === '' || countWords(message) < 30) {
+                    alert('Please enter a message with a minimum of 30 words.');
                     return false;
                 }
 
@@ -657,6 +706,25 @@
                 }
 
                 return true; // If all validation passes
+            }
+
+            function isValidEmail(email) {
+                // Basic email validation using a regular expression
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function isValidPhoneNumber(phoneNumber) {
+                // Basic 10-digit phone number validation using a regular expression
+                const phoneRegex = /^\d{10}$/;
+                return phoneRegex.test(phoneNumber);
+            }
+
+            function countWords(text) {
+                // Count words by splitting on spaces
+                return text.split(/\s+/).filter(function(word) {
+                    return word.length > 0;
+                }).length;
             }
         });
     </script>

@@ -18,7 +18,7 @@
     <ul>
         <li><strong>Name:</strong> {name}</li>
         <li><strong>Email:</strong> {email}</li>
-        <li><strong>Telephone:</strong> {telephone}</li>
+        <li><strong>Phone:</strong> {phone}</li>
     </ul>
 
     <h3>Message</h3>

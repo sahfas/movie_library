@@ -84,12 +84,12 @@ function sendAdminEmail($formData)
         $dateAndTime = date("Y-m-d H:i:s");
         $name = htmlspecialchars($formData['first_name'] . ' ' . $formData['last_name']);
         $email = htmlspecialchars($formData['email']);
-        $telephone = htmlspecialchars($formData['telephone']);
+        $phone = htmlspecialchars($formData['phone']);
         $message = nl2br(htmlspecialchars($formData['message']));
         $termsAccepted = $formData['terms'] ? 'Yes' : 'No';
 
         // Replace placeholders in the template with actual values
-        $mailBody = str_replace(['{dateAndTime}', '{name}', '{email}', '{telephone}', '{message}', '{termsAccepted}'], [$dateAndTime, $name, $email, $telephone, $message, $termsAccepted], $mailBody);
+        $mailBody = str_replace(['{dateAndTime}', '{name}', '{email}', '{phone}', '{message}', '{termsAccepted}'], [$dateAndTime, $name, $email, $phone, $message, $termsAccepted], $mailBody);
 
         $mail->Body = $mailBody;
 
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $firstName = $_POST['first_name'];
     $lastName = $_POST['last_name'];
     $email = $_POST['email'];
-    $telephone = $_POST['telephone'];
+    $phone = $_POST['phone'];
     $message = $_POST['message'];
     $terms = isset($_POST['terms']);
 
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'first_name' => $firstName,
         'last_name' => $lastName,
         'email' => $email,
-        'telephone' => $telephone,
+        'phone' => $phone,
         'message' => $message,
         'terms' => $terms,
         'date' => date("Y-m-d H:i:s")
